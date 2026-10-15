@@ -1,11 +1,11 @@
 <div align="center">
 
-# The static gaze fallacy: reader state shapes supervision targets in medical imaging AI
+# Human gaze defines conditional supervision targets in medical imaging AI
 
 Code, configuration and audit trails for the EyeAssist analyses described in the accompanying
-Nature Machine Intelligence manuscript.
+manuscript.
 
-[Project page](https://zhixiangwang-cn.github.io/static-gaze-fallacy/) · [Quick start](#quick-start) · [Analysis map](#analysis-map) · [Data access](#data-access)
+[Project page](https://zhixiangwang-cn.github.io/static-gaze-fallacy/) · [Quick start](#quick-start) · [Software review guide](SOFTWARE_REVIEW.md) · [Analysis map](#analysis-map) · [Data access](#data-access)
 
 </div>
 
@@ -47,6 +47,17 @@ python examples/synthetic_demo.py --output outputs/synthetic_demo
 ```
 
 The synthetic demo runs without clinical images or gaze records.
+On the authors' reference workstation (macOS 26.5.1 on Apple silicon, Python 3.12.13), a prepared environment
+completed the demo in approximately 2 seconds and produced `summary.json`,
+`held_out_scores.csv` and `group_disjoint_splits.csv`. Installation time depends on the package
+manager and network connection; creating the documented conda environment typically takes
+approximately 5--15 minutes on a standard desktop computer.
+
+The base analysis and synthetic demo require only a standard CPU and no non-standard hardware.
+The optional ResNet training entry points require substantially more compute; a CUDA-capable GPU
+is recommended for those experiments. The continuous-integration workflow tests the base package
+successfully on GitHub Actions `ubuntu-latest` with Python 3.10 and 3.11. The authors also ran the
+unit tests and data-free demonstration on macOS 26.5.1 (Apple silicon) with Python 3.12.13.
 
 For controlled-access EyeAssist data:
 
@@ -238,3 +249,8 @@ the repository.
 ## Citation
 
 Please cite the accompanying EyeAssist manuscript when using this analysis code.
+
+## License and peer-review use
+
+The source code in this repository is released under the OSI-approved MIT License. See
+[`LICENSE`](LICENSE) for the terms of use, modification and redistribution.
